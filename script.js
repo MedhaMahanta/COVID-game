@@ -103,17 +103,20 @@ function component(width, height, color, x, y) {
 function nextFrame() {
 	var obstX, obstY;
 	for (i = 0; i < obst.length; i += 1) {
-        if (obj.crashed(obst[i])) {
-            gameCanvas.stop("Oh no! You came too close. Please try again.");
-            return;
-        } 
-    }
-    if (obj.x > 650) {
-    	gameCanvas.stop("Yay! You made it to the end of the store safely.");
-        return;
-    }
-    frame += 1;
+		if (obj.crashed(obst[i])) {
+		    gameCanvas.stop("Oh no! You came too close. Please try again.");
+		    return;
+		} 
+	}
+	if (obj.x > 650) {
+	gameCanvas.stop("Yay! You made it to the end of the store safely.");
+	return;
+	}
+	frame += 1;
 	gameCanvas.clear();
+	if (gameCanvas.key && gameCanvas.key == 39) {
+	obj.rightSpeed = 1;
+	}
 	var counter = Math.floor(Math.random() * 200);
 	if (counter == 0) {
 		var obstY = Math.floor(Math.random() * 
